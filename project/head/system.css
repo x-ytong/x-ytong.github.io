@@ -8,6 +8,7 @@ a:hover {color: rgba(255,103,0,0.6); text-decoration: none;}
 a img {border: 1px solid transparent;}
 a img:hover {border: 1px solid #FF6700; filter: alpha (Opacity = 50); -moz-opacity: 0.5; opacity: 0.5;}
 p {width: 800px; margin-bottom: 9px; text-align: justify; text-justify: inter-character;}
+li {text-align: justify; text-justify: inter-character;}
 table {width: 800px;}
 tr,td {font-size: 15px; color: #666666; text-align: justify; text-justify: inter-character;}
 
