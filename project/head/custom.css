@@ -1,5 +1,5 @@
 .tabMenu          {width: 800px;}
-.tabMenu ul       {list-style: none; list-style-position: inside; height: 50px;}
+.tabMenu ul       {list-style: none; height: 50px;}
 .tabMenu ul li    {width: 33.08%; float: left; text-align: center; line-height: 30px; 
                    border-right: 1px solid #C9C3C4; border-left: 1px solid #C9C3C4; background: #E9E9E6; 
 	                 filter: alpha (Opacity = 50); -moz-opacity: 0.5; opacity: 0.5;}
