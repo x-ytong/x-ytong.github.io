@@ -17,4 +17,4 @@ var tab = function(id){
         myDiv[j].className = "hide";}
       this.className = "on";
       myDiv[this.index].className = "show";}}}
-window.onload = function(){tab("tab1"); tab("tab2");}
+window.onload = function(){tab("tab1"); tab("tab2"); tab("tab3");}
