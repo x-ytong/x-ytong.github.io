@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PRE-land-cover</title>
+	<link type="text/css" href="/project/head/system.css" rel="stylesheet"/>
+	<link type="text/css" href="/project/head/custom.css" rel="stylesheet"/>
+	<script type="text/javascript" src="/project/head/custom.js"></script>
+</head>
+
+<body marginheight="0">
+<div align="center"><h1>Global High Categorical Resolution Land Cover Mapping via Weak Supervision</h1></div>
+
+<p style="text-align: center">Xin-Yi Tong, Runmin Dong, Xiao Xiang Zhu</p>
+
+<h2>Introduction</h2>
+<p>Land cover information is essential for achieving the United Nations’ sustainable development goals, and land cover mapping under a more detailed 
+category system would significantly contribute to economic livelihood tracking and environmental degradation measurement. However, the substantial 
+difficulty in acquiring fine-grained training data makes the implementation of this task particularly challenging. Here, we propose to combine fully 
+labeled source domain and weakly labeled target domain for weakly supervised domain adaptation (WSDA). This is beneficial as the utilization of sparse 
+and coarse weak labels can considerably alleviate the labor required for precise and detailed land cover annotation. Specifically, we introduce the 
+Prototype-based pseudo-label Rectification and Expansion (<b>PRE</b>) approach, which leverages the prototypes as the bridge to connect sparse labels 
+and global feature distributions. According to the feature distances to the prototypes, the confidence of pseudo-labels predicted in the unlabeled 
+regions of the target domain is assessed. This confidence is then utilized to guide the dynamic expansion and rectification of pseudo-labels. Based on 
+PRE, we carry out high categorical resolution land cover mapping for 10 cities in different regions around the world, severally using PlanetScope (PS), 
+Gaofen-1 (GF-1), and Sentinel-2 (ST-2) satellite images. In the study areas, we achieve <b>cross-sensor</b>, <b>cross-category</b>, and 
+<b>cross-continent</b> WSDA, with the overall accuracy exceeding 80%. The promising results indicate that PRE is capable of reducing the dependency of 
+land cover classification on high-quality annotations, thereby supporting "data minimization" in a cost-effective manner. We expect our work to enable 
+global fine-grained land cover mapping which in turn promote Earth observation to provide more precise and thorough information for environmental 
+monitoring.</p>
+<div style="border: 4px solid #FFFFFF"></div>
+
+<h3>Study Area and Data</h3>
+<p>we construct a weakly supervised land cover classification dataset, comprising two parts: C-megacities and G-cities, which are globally distributed 
+and feature-rich in information with fine-grained weak labels. It encompasses various satellite imagery with spatial resolutions ranging from <b>3 m</b> 
+to <b>10 m</b>. Using it as the target domain and combining with the source domain, i.e., the 
+<a href="https://x-ytong.github.io/project/Five-Billion-Pixels.html"><b>Five-Billion-Pixels</b></a> dataset, we implement land cover mapping for 10 
+cities located globally via WSDA.</p>
+
+<div style="border: 9px solid #FFFFFF"></div>
+<div id = "tab1" class = "tabMenu">
+	<ul>
+	<li class="on"><h4>Distribution and Categories</h4></li>
+  <li class="off"><h4>Annotation Details</h4></li>
+  <li class="off"><h4>Download</h4></li>
+  </ul>
+	<div id="firstPage" class="show">
+	<p style="margin-top: 7px">The classes of C-megacities are identical to those of the source domain, while the classes of G-cities has been slightly 
+  adjusted according to the <a href="https://land.copernicus.eu/en/products/corine-land-cover"><b>CORINE</b></a> land cover project. Therefore, between 
+  G-cities and the source domain, there exists cross-sensor, cross-category, and cross-continent challenges.</p>
+	<img src="/figure/GCT/GCTdistribution.png" width="800px">
+  </div>
+  <div id="secondPage" class= "hide">
+	<p style="margin-top: 7px">Examples of densely annotated source domain and sparsely annotated target domain. Fine delineation for a single 
+  1000&times1000-pixel image with a resolution of 3 m takes approximately <b>1 hour</a>. In contrast, scribbling an image with the same size and 
+  resolution takes only about <b>1 minute</a> due to the avoidance of outlining boundaries.</p>
+  <img src="/figure/GCT/GCTlabel.png" width="800px">
+  </div>
+  <div id="thirdPage" class = "hide">
+  <p style="margin-top: 7px">C-megacities and G-cities are released under the open source license:</p>
+  <li style="margin-top: 9px" class = "dot"><span class = "lin">Link: <a href=" "><b>Coming Soon</b></a></span></li>
+	</div>
+</div>
+<div style="border: 8px solid #FFFFFF"></div>
+		
+<h3>Weakly Supervised Domain Adaptation</h3>
+<p>The objective of the WSDA task is to train a semantic segmentation model using fully annotated source data and weakly annotated target data, 
+ensuring effective adaptation of the model to the target domain. we propose PRE to link labeled and unlabeled regions in the target domain utilizing 
+the prototypes. Concretely, in addition to using labeled regions from the source and target domains to assess the domain joint segmentation loss, we 
+introduce a dynamic pseudo-label self-training loss and a dynamic pseudo-label self-rectification loss. A subset of the most reliable pseudo-labels 
+is used to compute the self-training loss. The remaining ones are rectified based on the feature distances, and the degree of modification is used to 
+calculate the self-rectification loss. With each iteration, the pseudo-labels are dynamically expanded, and the prototypes are dynamically updated. </p>
+
+<div style="border: 9px solid #FFFFFF"></div>
+<div id = "tab2" class = "tabMenu">
+	<ul>
+	<li class="on"><h4>Overview of Approach</h4></li>
+  <li class="off"><h4>Comparative Results</h4></li>
+  <li class="off"><h4>Code</h4></li>
+  </ul>
+	<div id="firstPage" class="show">
+	<img src="/figure/GCT/GCTpre.png" width="800px">
+  </div>
+  <div id="secondPage" class= "hide">
+	<img src="/figure/GCT/GCTresult.png" width="800px">
+  </div>
+  <div id="thirdPage" class = "hide">
+	<p style="margin-top:  7px">The code for PRE is available here:</p>
+  <li style="margin-top: 9px" class = "dot"><span class = "lin">Link: <a href=" "><b>Coming Soon</b></a> </span></li>
+  </div>
+</div>
+<div style="border: 8px solid #FFFFFF"></div>
+
+<h3>Land Cover Mapping</h3>
+<p>We creat land cover mapping results for G-cities, which are mosaicked from 101 PS images. Among them, 30 images have weak annotations used for model 
+training, 10 images have annotations for testing but not involved in training, and the remaining 71 images having no annotations at all. To ensure the 
+completeness of visual presentation, these 30 training images are not removed during mapping. Therefore, these results are presented for illustrative 
+purposes only.</p>
+
+<div style="border: 9px solid #FFFFFF"></div>
+<div id = "tab3" class = "tabMenu">
+	<ul>
+	<li class="on"><h4>Result Demonstration</h4></li>
+  <li class="off"><h4>Mapping Comparison</h4></li>
+  <li class="off"><h4>Specific Class Results</h4></li>
+  </ul>
+	<div id="firstPage" class="show">
+	<hr></hr> 
+	<table align="center"><tr>
+	<td style="text-align:center"><a href="https://x-ytong.github.io/project/page/Five-Billion-Pixels_beijing.html">  <img src="/figure/FBP/FBPbeijingsmall.png"   style="height:168px"></a> <br> Beijing   </td>
+	<td style="text-align:center"><a href="https://x-ytong.github.io/project/page/Five-Billion-Pixels_chengdu.html">  <img src="/figure/FBP/FBPchengdusmall.png"   style="height:168px"></a> <br> Chengdu   </td>
+	<td style="text-align:center"><a href="https://x-ytong.github.io/project/page/Five-Billion-Pixels_guangzhou.html"><img src="/figure/FBP/FBPguangzhousmall.png" style="height:168px"></a> <br> Guangzhou </td>
+	<td style="text-align:center"><a href="https://x-ytong.github.io/project/page/Five-Billion-Pixels_shanghai.html"> <img src="/figure/FBP/FBPshanghaismall.png"  style="height:168px"></a> <br> Shanghai  </td>
+	<td style="text-align:center"><a href="https://x-ytong.github.io/project/page/Five-Billion-Pixels_wuhan.html">    <img src="/figure/FBP/FBPwuhansmall.png"     style="height:168px"></a> <br> Wuhan     </td>
+	</tr></table>
+	<hr></hr>
+  </div>
+  <div id="secondPage" class= "hide">
+	<p style="margin-top: 7px">Visual comparison with different land cover mapping projects in Berlin, including Google's 
+  <a href="https://dynamicworld.app/"><b>Dynamic World</b></a>, ESA's <a href="https://esa-worldcover.org/"><b>World Cover</b></a>, and EEA's 
+  <a href="https://land.copernicus.eu/en/products/corine-land-cover"><b>CORINE</b></a> Land Cover.</p>
+  <a href="https://x-ytong.github.io/project/page/Five-Billion-Pixels_comparison.html"><img src="/figure/GCT/GCTcomparison.png" width="800px"></a>
+  </div>
+  <div id="thirdPage" class = "hide">
+	<p style="margin-top: 7px">The detailed land cover mapping results depict specific categories relevant to the natural environment, economic 
+  activities, and urban quality of life, with other categories hidden for visual clarity. (a) Urban industrial zones and urban green spaces in 
+  Melbourne; (b) Smallholder agriculture in Nairobi; (c) Mineral sites within forested areas in Sao Paulo; (d) Suburban croplands and wetlands in 
+  Washington DC.</p>
+  <a href="https://x-ytong.github.io/project/page/Five-Billion-Pixels_comparison.html"><img src="/figure/GCT/GCTspecificclass.png" width="800px"></a>
+  </div>
+</div>
+<div style="border: 8px solid #FFFFFF"></div>
+
+<h3>Citation</h3>
+<pre>
+@article{
+}
+</pre>
+
+<h3 style="margin-top: 51px">Contact</h3>
+<p>E-mail: xinyi.tong@tum.de</p>
+<p>Personal page: <a href="https://x-ytong.github.io/"><b>Xin-Yi Tong</b></a></p>
+
+<div style="border:40px solid #FFFFFF"></div>
+
+
+</body>
+</html>
