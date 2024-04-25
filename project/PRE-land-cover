@@ -17,23 +17,21 @@
 <p>Land cover information is essential for achieving the United Nations’ sustainable development goals, and land cover mapping under a more detailed 
 category system would significantly contribute to economic livelihood tracking and environmental degradation measurement. However, the substantial 
 difficulty in acquiring fine-grained training data makes the implementation of this task particularly challenging. Here, we propose to combine fully 
-labeled source domain and weakly labeled target domain for weakly supervised domain adaptation (WSDA). This is beneficial as the utilization of sparse 
-and coarse weak labels can considerably alleviate the labor required for precise and detailed land cover annotation. Specifically, we introduce the 
-Prototype-based pseudo-label Rectification and Expansion (<b>PRE</b>) approach, which leverages the prototypes as the bridge to connect sparse labels 
-and global feature distributions. According to the feature distances to the prototypes, the confidence of pseudo-labels predicted in the unlabeled 
-regions of the target domain is assessed. This confidence is then utilized to guide the dynamic expansion and rectification of pseudo-labels. Based on 
-PRE, we carry out high categorical resolution land cover mapping for 10 cities in different regions around the world, severally using PlanetScope (PS), 
-Gaofen-1 (GF-1), and Sentinel-2 (ST-2) satellite images. In the study areas, we achieve <b>cross-sensor</b>, <b>cross-category</b>, and 
-<b>cross-continent</b> WSDA, with the overall accuracy exceeding 80%. The promising results indicate that PRE is capable of reducing the dependency of 
-land cover classification on high-quality annotations, thereby supporting "data minimization" in a cost-effective manner. We expect our work to enable 
-global fine-grained land cover mapping which in turn promote Earth observation to provide more precise and thorough information for environmental 
-monitoring.</p>
+labeled source domain and weakly labeled target domain for <b>weakly supervised domain adaptation (WSDA)</b>. This is beneficial as the utilization of 
+sparse and coarse weak labels can considerably alleviate the labor required for precise and detailed land cover annotation. Specifically, we introduce 
+the <b>Prototype-based pseudo-label Rectification and Expansion (PRE)</b> approach, which leverages the prototypes as the bridge to connect sparse 
+labels and global feature distributions. Based on PRE, we carry out high-categorical-resolution land cover mapping for 10 cities in different regions 
+around the world, severally using PlanetScope (PS), Gaofen-1 (GF-1), and Sentinel-2 (ST-2) satellite images. In the study areas, we achieve 
+<b>cross-sensor</b>, <b>cross-category</b>, and <b>cross-continent</b> WSDA, with the overall accuracy exceeding 80%. The promising results indicate 
+that PRE is capable of reducing the dependency of land cover classification on high-quality annotations, thereby supporting "data minimization" in a 
+cost-effective manner. We expect our work to enable global fine-grained land cover mapping which in turn promote Earth observation to provide more 
+precise and thorough information for environmental monitoring.</p>
 <div style="border: 4px solid #FFFFFF"></div>
 
 <h3>Study Area and Data</h3>
-<p>we construct a weakly supervised land cover classification dataset, comprising two parts: C-megacities and G-cities, which are globally distributed 
-and feature-rich in information with fine-grained weak labels. It encompasses various satellite imagery with spatial resolutions ranging from <b>3 m</b> 
-to <b>10 m</b>. Using it as the target domain and combining with the source domain, i.e., the 
+<p>We construct a weakly supervised land cover classification dataset, comprising two parts: <b>C-megacities</b> and <b>G-cities</b>, which are 
+globally distributed and feature-rich in information with fine-grained weak labels. It encompasses various satellite imagery with spatial resolutions 
+ranging from <b>3 m</b> to <b>10 m</b>. Using it as the target domain and combining with the source domain: the 
 <a href="https://x-ytong.github.io/project/Five-Billion-Pixels.html"><b>Five-Billion-Pixels</b></a> dataset, we implement land cover mapping for 10 
 cities located globally via WSDA.</p>
 
