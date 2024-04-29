@@ -14,18 +14,18 @@
 <p style="text-align: center">Xin-Yi Tong, Runmin Dong, Xiao Xiang Zhu</p>
 
 <h2>Introduction</h2>
-<p>Land cover information is essential for achieving the United Nations’ sustainable development goals, and land cover mapping under a more detailed 
-category system would significantly contribute to economic livelihood tracking and environmental degradation measurement. However, the substantial 
-difficulty in acquiring fine-grained training data makes the implementation of this task particularly challenging. Here, we propose to combine fully 
-labeled source domain and weakly labeled target domain for <b>weakly supervised domain adaptation (WSDA)</b>. This is beneficial as the utilization of 
-sparse and coarse weak labels can considerably alleviate the labor required for precise and detailed land cover annotation. Specifically, we introduce 
-the <b>Prototype-based pseudo-label Rectification and Expansion (PRE)</b> approach, which leverages the prototypes as the bridge to connect sparse 
-labels and global feature distributions. Based on PRE, we carry out high-categorical-resolution land cover mapping for 10 cities in different regions 
-around the world, severally using PlanetScope (PS), Gaofen-1 (GF-1), and Sentinel-2 (ST-2) satellite images. In the study areas, we achieve 
-<b>cross-sensor</b>, <b>cross-category</b>, and <b>cross-continent</b> WSDA, with the overall accuracy exceeding 80%. The promising results indicate 
-that PRE is capable of reducing the dependency of land cover classification on high-quality annotations, thereby supporting "data minimization" in a 
-cost-effective manner. We expect our work to enable global fine-grained land cover mapping which in turn promote Earth observation to provide more 
-precise and thorough information for environmental monitoring.</p>
+<p>Land cover information is indispensable for advancing the United Nations’ sustainable development goals, and land cover mapping under a more 
+detailed category system would significantly contribute to economic livelihood tracking and environmental degradation measurement. However, the 
+substantial difficulty in acquiring fine-grained training data makes the implementation of this task particularly challenging. Here, we propose to 
+combine fully labeled source domain and weakly labeled target domain for <b>weakly supervised domain adaptation (WSDA)</b>. This is beneficial as the 
+utilization of sparse and coarse weak labels can considerably alleviate the labor required for precise and detailed land cover annotation. 
+Specifically, we introduce the <b>Prototype-based pseudo-label Rectification and Expansion (PRE)</b> approach, which leverages the prototypes (i.e., 
+the class-wise feature centroids) as the bridge to connect sparse labels and global feature distributions. Based on PRE, we carry out high categorical 
+resolution land cover mapping for 10 cities in different regions around the world, severally using PlanetScope (PS), Gaofen-1 (GF-1), and Sentinel-2 
+(ST-2) satellite images. In the study areas, we achieve <b>cross-sensor</b>, <b>cross-category</b>, and <b>cross-continent</b> WSDA, with the overall 
+accuracy exceeding 80%. The promising results indicate that PRE is capable of reducing the dependency of land cover classification on high-quality 
+annotations, thereby improving label efficiency. We expect our work to enable global fine-grained land cover mapping, which in turn promote Earth 
+observation to provide more precise and thorough information for environmental monitoring.</p>
 <div style="border: 4px solid #FFFFFF"></div>
 
 <h3>Study Area and Data</h3>
